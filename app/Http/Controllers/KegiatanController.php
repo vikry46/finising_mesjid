@@ -36,7 +36,11 @@ class KegiatanController extends Controller
 
        }
 
-        return view('kegiatan.index', compact('kegiatans'));
+       $lacon = Lacon::get();
+       $pengurus = Pengurus::get();
+       $jeniskegiatan = Jeniskegiatan::get();
+
+        return view('kegiatan.index', compact(['kegiatans','lacon', 'pengurus', 'jeniskegiatan']));
     }
 
     /**
@@ -126,11 +130,35 @@ class KegiatanController extends Controller
      * @param  \App\Models\Kegiatan  $kegiatan
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Kegiatan $kegiatan)
+    public function destroy(Request $request)
     {
-        dd($kegiatan->id);
-        // Kegiatan::destroy($kegiatan->id);
-        // return redirect()->route('kegiatan.index');
+
+        $kegiatan = Kegiatan::where('id', $request->id_kegiatan)->first();
+        $kegiatan->delete();
+
+        if($kegiatan){
+            return redirect()->back()->with('success', 'Berahasil menghapus kegiatan' );
+        }
+
+    }
+
+    public function ubah(Request $request){
+
+    
+        $kegiatan = Kegiatan::where( 'id', '=', $request->id_kegiatan)->first();
+        $kegiatan->nama = $request->nama;
+        $kegiatan->tgl_mulai = $request->tgl_mulai;
+        $kegiatan->tgl_selesai = $request->tgl_selesai;
+        $kegiatan->id_jenis_kegiatan = $request->jeniskegiatan;
+        $kegiatan->id_lacon = $request->imam;
+        $kegiatan->id_penceramah = $request->penceramah;
+        $kegiatan->id_pengurus = $request->pengurus;
+        $kegiatan->keterangan = $request->keterangan;
+        $kegiatan->save();
+        
+        if($kegiatan){
+            return redirect()->back()->with('success', 'Berhasil mengubah data kegiatan' );
+        }
     }
 
         /**

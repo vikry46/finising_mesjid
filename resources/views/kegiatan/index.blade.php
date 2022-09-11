@@ -10,6 +10,14 @@
 
    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
+   <style>
+    .button-hapus{
+      position: absolute;
+      bottom: 85px;
+      left: 100px;
+    }
+   </style>
+
 @endpush
 
 @section('bg-color')
@@ -45,12 +53,83 @@
       </div>
       <div class="modal-body">
         <div id="dataKegiatan"></div>
+
+        <form action="{{ route('kegiatan.ubah') }}" method="POST">
+          @csrf
+          <input type="hidden" name="id_kegiatan" id="id_kegiatan">
+
+          <div class="form-group">
+            <label for="nama">Nama Kegiatana</label>
+            <input class="form-control" type="text" name="nama" id="nama">
+          </div>
+  
+          <div class="form-group">
+            <label for="nama">Tanggal Mulai</label>
+            <input class="form-control" type="datetime-local" name="tgl_mulai" id="tgl_mulai">
+          </div>
+  
+          <div class="form-group">
+            <label for="nama">Tanggal Selesai</label>
+            <input class="form-control" type="datetime-local" name="tgl_selesai" id="tgl_selesai">
+          </div>
+  
+          <div class="form-group">
+            <label for="nama">Penceramah</label>
+            <select class="form-control" name="penceramah" id="penceramah">
+              @foreach ($lacon as $item)
+                  <option value="{{ $item->id }}">{{ $item->nama }}</option>
+              @endforeach
+            </select>
+          </div>
+  
+          <div class="form-group">
+            <label  for="nama">Pengurus</label>
+            <select class="form-control" name="pengurus" id="pengurus">
+              @foreach ($pengurus as $item)
+                  <option value="{{ $item->id }}">{{ $item->nama }}</option>
+              @endforeach
+            </select>
+          </div>
+  
+          <div class="form-group">
+            <label for="nama">Jenis Kegiatan</label>
+            <select class="form-control" name="jeniskegiatan" id="jeniskegiatan">
+              @foreach ($jeniskegiatan as $item)
+                  <option value="{{ $item->id }}">{{ $item->jenis_kegiatan }}</option>
+              @endforeach
+            </select>
+          </div>
+  
+          <div class="form-group">
+            <label for="nama">Imam</label>
+            <select class="form-control" name="imam" id="imam">
+              @foreach ($lacon as $item)
+                  <option value="{{ $item->id }}">{{ $item->nama }}</option>
+              @endforeach
+            </select>
+          </div>
+  
+          <div class="form-group">
+            <label for="nama">Keterangan</label>
+            <textarea class="form-control" name="keterangan" id="keterangan" cols="30" rows="10"></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary">Simpan</button>
+
+        </form>
+
+        <form action="{{ route('kegiatan.delete') }}" method="POST">
+          @csrf
+          <input type="hidden" name="id_kegiatan" id="id_kegiatan_hapus">
+          <button type="submit" class="btn btn-danger button-hapus">Hapus</button>
+        </form>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <a type="" class="btn btn-danger" data-bs-dismiss="modal">Hapus</a>
-        {{-- <button type="button" class="btn btn-primary">Save changes</button> --}}
-      </div>
+      
     </div>
   </div>
 </div>
@@ -177,7 +256,7 @@
                           } else {
 
                                   event.allDay = false;
-
+                            
                           }
 
                       },
@@ -185,65 +264,6 @@
                       selectable: true,
 
                       selectHelper: true,
-
-                      select: function (start, end, allDay) {
-
-                          var title = prompt('Event Title:');
-
-                          // var pengurus = prompt('Pengurus');
-
-                          if (title) {
-
-                              var start = $.fullCalendar.formatDate(start, "Y-MM-DD");
-
-                              var end = $.fullCalendar.formatDate(end, "Y-MM-DD");
-
-                              $.ajax({
-
-                                  url: SITEURL + "/dashboard/kegiatan_ajax",
-
-                                  data: {
-
-                                      nama: title,
-
-                                      tgl_mulai: start,
-
-                                      tgl_selesai: end,
-
-                                      type: 'add'
-
-                                  },
-
-                                  type: "POST",
-
-                                  success: function (data) {
-
-                                      displayMessage("Event Created Successfully");
-
-                                      calendar.fullCalendar('renderEvent',
-
-                                          {
-
-                                            title: nama,
-
-                                            start: tgl_mulai,
-
-                                            end: tgl_selesai,
-
-                                            allDay: allDay
-
-                                          },true);
-
-
-                                      calendar.fullCalendar('unselect');
-
-                                  }
-
-                              });
-
-                          }
-
-                      },
 
                       eventDrop: function (event, delta) {
 
@@ -303,41 +323,18 @@
 
                                     $('#detailKegiatan').modal('show')
 
-                                    $('#dataKegiatan').html(`
+                                    $('#nama').val(response.nama);
+                                    $('#tgl_mulai').val(response.tgl_mulai);
+                                    $('#tgl_selesai').val(response.tgl_selesai);
+                                    $('#penceramah').val(response.id_lacon).change();
+                                    $('#pengurus').val(response.id_pengurus).change();
+                                    $('#jenis_kegiatan').val(response.jenis_kegiatan).change();
+                                    $('#keterangan').val(response.keterangan);
 
-                                        <table>
-                                            <tr>
-                                              <td style='font-weight:bold; width:200px; margin-top:20px'>Judul Kegiatan</td>
-                                              <td>${response.nama}</td>
-                                            </tr>
-
-                                            <tr>
-                                              <td style='font-weight:bold; width:200px; margin-top:20px''>Lacon</td>
-                                              <td>${response.lacon.nama}</td>
-                                            </tr>
-
-                                            <tr>
-                                              <td style='font-weight:bold; width:200px; margin-top:20px''>Pengurus</td>
-                                              <td>${response.pengurus.nama}</td>
-                                            </tr>
-
-                                            <tr>
-                                              <td style='font-weight:bold; width:200px; margin-top:20px''>Penceramah</td>
-                                              <td>${response.penceramah.nama}</td>
-                                            </tr>
-
-                                            <tr>
-                                              <td style='font-weight:bold; width:200px; margin-top:20px''>Judul Kegiatan</td>
-                                              <td>${response.jeniskegiatan.jenis_kegiatan}</td>
-                                            </tr>
-
-                                            <tr>
-                                              <td style='font-weight:bold; width:200px; margin-top:20px''>Keterangan</td>
-                                              <td>${response.keterangan}</td>
-                                            </tr>
-                                        </table>
-
-                                    `)
+                                    //id_kegiatan
+                                    $('#id_kegiatan').val(response.id);
+                                    $('#id_kegiatan_hapus').val(response.id);
+                                  
 
                                   }
 

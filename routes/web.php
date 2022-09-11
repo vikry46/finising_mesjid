@@ -11,6 +11,7 @@ use App\Http\Controllers\JeniskegiatanController;
 use App\Http\Controllers\SosialController;
 use App\Http\Controllers\MesjidController;
 use App\Http\Controllers\YatimController;
+use App\Http\Controllers\TelegramContoller;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,6 +28,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/telegram', [TelegramContoller::class, 'test']);
 
 
 Auth::routes([
@@ -42,6 +44,8 @@ Route::group(['prefix' => '/dashboard'], function(){
         Route::resource('/kegiatan', KegiatanController::class);
         Route::post('/kegiatan_ajax', [KegiatanController::class, 'ajax']);
         Route::get('/single_kegiatan', [KegiatanController::class, 'singleKegiatan']);
+        Route::post('/kegiatan/delete', [KegiatanController::class, 'destroy'])->name('kegiatan.delete');
+        Route::post('/kegiatan/ubah', [KegiatanController::class, 'ubah'])->name('kegiatan.ubah');
 
         Route::resource('/pengurus', PengurusController::class);
         Route::resource('/jabatan', JabatanController::class);
