@@ -27,9 +27,9 @@
                 <div class="col-lg-6">
                     <div class="form-group">
                         <label for="tgl">
-                            Tanggal Mulai
+                            Tanggal Mulai, Jam Diketik Manual!!!
                         </label>
-                        <input type="date" id="tgl_mulai" name="tgl_mulai" value="{{ old('tgl_mulai') }}" class="form-control @error('tgl_mulai') is-invalid @enderror" placeholder="Masukan Tanggal Penulisan">
+                        <input type="datetime-local" id="tgl_mulai" name="tgl_mulai" value="{{ old('tgl_mulai') }}" class="form-control @error('tgl_mulai') is-invalid @enderror" placeholder="Masukan Tanggal Penulisan, jam diketik!!!">
                         @error('tgl_mulai')
                              <div class="invalid-feedback">
                                 <span>
@@ -55,7 +55,7 @@
                         <label for="id_lacon">
                             Imam
                         </label>
-                        <select name="id_lacon" id="id_lacon" class="form-control @error('id_lacon') is-invalid @enderror">
+                        <select name="id_lacon" id="id_lacon" value="{{ old('id_lacon') }}" class="form-control @error('id_lacon') is-invalid @enderror">
                             <option value="">Pilih Imam</option>
                             @foreach($lacon as $lc)
                                 <option value="{{ $lc->id }}">{{ $lc->nama }}</option>
@@ -91,9 +91,9 @@
                 <div class="col-lg-6">
                     <div class="form-group">
                         <label for="tgl_selesai">
-                            Tanggal Selesai
+                            Tanggal Selesai, Jam DiKetik Manual !!!
                         </label>
-                        <input type="date" id="tgl_selesai" name="tgl_selesai" value="{{ old('tgl_selesai') }}" class="form-control @error('tgl_selesai') is-invalid @enderror" placeholder="Masukan Tanggal Penulisan">
+                        <input type="datetime-local" id="tgl_selesai" name="tgl_selesai" value="{{ old('tgl_selesai') }}" class="form-control @error('tgl_selesai') is-invalid @enderror" placeholder="Masukan Tanggal Selesai, Jam diketik!!!">
                         @error('tgl_selesai')
                             <div class="invalid-feedback">
                                 <span>
@@ -142,7 +142,7 @@
                         <label for="keterangan">
                             Keterangan
                         </label>
-                        <textarea name="keterangan" id="keterangan" cols="30" rows="2" class="form-control  @error('keterangan') is-invalid @enderror" placeholder="Masukan Keterangan">{{ old('keterangan') }}</textarea>
+                        <textarea name="keterangan" id="keterangan" cols="30" rows="2" class="form-control  @error('keterangan') is-invalid @enderror" placeholder="Masukan Keterangan"></textarea>
                         @error('keterangan')
                             <div class="invalid-feedback">
                                 <span>

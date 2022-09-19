@@ -11,8 +11,9 @@ use App\Http\Controllers\JeniskegiatanController;
 use App\Http\Controllers\SosialController;
 use App\Http\Controllers\MesjidController;
 use App\Http\Controllers\YatimController;
-use App\Http\Controllers\TelegramContoller;
-
+use App\Http\Controllers\RoleController;
+use App\Http\Controllers\TelegramController;
+use App\Http\Controllers\UserController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -28,7 +29,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/telegram', [TelegramContoller::class, 'test']);
+// Route::get('/telegram', [TelegramContoller::class, 'test']);
 
 
 Auth::routes([
@@ -51,6 +52,8 @@ Route::group(['prefix' => '/dashboard'], function(){
         Route::resource('/jabatan', JabatanController::class);
         Route::resource('/lacon', LaconController::class);
         Route::resource('/jeniskegiatan', JeniskegiatanController::class);
+        Route::resource('/role', RoleController::class);
+        Route::resource('/users', UserController::class);
 
         // Bagian keuangan mesjid
         Route::group(['prefix' => '/keuangan'], function(){

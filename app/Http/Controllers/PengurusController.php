@@ -10,7 +10,16 @@ use Symfony\Contracts\Service\Attribute\Required;
 
 class PengurusController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('permission:pengurus_show',['only' => 'index']);
+        $this->middleware('permission:pengurus_create',['only' => 'create','store']);
+        $this->middleware('permission:pengurus_update',['only' => 'edit','update']);
+        $this->middleware('permission:pengurus_delete',['only' => 'destroy']);
+    }
     /**
+    
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response

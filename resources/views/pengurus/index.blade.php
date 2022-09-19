@@ -20,6 +20,7 @@
 <center><h2 class="text-light">Form Pengurus</h2></center>
 <div class="row justify-content-center">
     <div class="col-xl-4 col-sm-6 mb-xl-0 mt-5">
+      @can('pengurus_create')
       <div class="card">
         <div class="card-body p-3">
           <div class="row">
@@ -41,6 +42,7 @@
           </div>
         </div>
       </div>
+      @endcan
     </div>
     <div class="col-xl-4 col-sm-6 mb-xl-0 mt-5">
       <div class="card">
@@ -75,7 +77,7 @@
                 @foreach ($zoya as $zee)
                 <div class="col-lg-4">
                     <div class="card card-profile mt-5">
-                    <img src="{{ asset('storage/' . $zee->image) }}" alt="Image placeholder" class="card-img-top mt-3">
+                    <img src="{{ asset('storage/' . $zee->image) }}"  class="card-img-top mt-3">
                         <div class="card-body pt-0">
                             <div class="row">
                                 <div class="col"></div>
@@ -85,10 +87,7 @@
                                     <span class="font-weight-light">{{ $zee->jabatan->nama_kategori }}</span>
                                 </h5>
                                 <div class="h6 font-weight-300">
-                                    <i class="ni location_pin mr-2"></i>{{ $zee->kode }}, Romania
-                                </div>
-                                <div class="h6 mt-1">
-                                    <i class="ni business_briefcase-24 mr-2"></i>Id Pengurus {{ $zee->kode }} - {{ config('app.name') }}
+                                    <i class="ni location_pin mr-2"></i>{{ $zee->kode }}
                                 </div>
                                 <div class="h6 mt-1">
                                     <i class="ni business_briefcase-24 mr-2"></i>Nama : {{ $zee->nama }}

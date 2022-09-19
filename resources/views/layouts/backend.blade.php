@@ -60,6 +60,7 @@
             <span class="nav-link-text ms-1">Dashboard</span>
           </a>
         </li>
+        @can('kegiatan_show')
         <li class="nav-item">
           <a class="nav-link {{ set_active(['kegiatan.index','kegiatan.create']) }}" href="{{ route('kegiatan.index') }}">
             <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
@@ -68,6 +69,8 @@
             <span class="nav-link-text ms-1">Kegiatan</span>
           </a>
         </li>
+        @endcan
+        @can('pengurus_show')
         <li class="nav-item">
           <a class="nav-link {{ set_active(['pengurus.index','pengurus.create','pengurus.edit',
                                             'jabatan.index','jabatan.create','jabatan.edit',])
@@ -79,6 +82,7 @@
             <span class="nav-link-text ms-1">Pengurus</span>
           </a>
         </li>
+        @endcan
         <li class="nav-item">
           <a class="nav-link {{ set_active(['jeniskegiatan.index','jeniskegiatan.create','jeniskegiatan.edit',]) }}" href="{{ route('jeniskegiatan.index') }}">
             <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
@@ -107,6 +111,15 @@
               <i class="ni ni-money-coins text-danger text-sm opacity-10"></i>
             </div>
             <span class="nav-link-text ms-1">Keuangan</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link {{ set_active(['role.index','role.edit','role.create'])  }}"
+                href="{{ route('role.index') }}">
+            <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="ni ni-settings text-info text-sm opacity-10"></i>
+            </div>
+            <span class="nav-link-text ms-1">Hak Akses</span>
           </a>
         </li>
       </ul>

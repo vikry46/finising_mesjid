@@ -327,6 +327,7 @@
                                     $('#tgl_mulai').val(response.tgl_mulai);
                                     $('#tgl_selesai').val(response.tgl_selesai);
                                     $('#penceramah').val(response.id_lacon).change();
+                                    $('#imam').val(response.id_lacon).change();
                                     $('#pengurus').val(response.id_pengurus).change();
                                     $('#jenis_kegiatan').val(response.jenis_kegiatan).change();
                                     $('#keterangan').val(response.keterangan);

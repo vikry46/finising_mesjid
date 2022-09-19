@@ -11,7 +11,13 @@ use Illuminate\Http\Request;
 class KegiatanController extends Controller
 {
 
-
+    public function __construct()
+    {
+        $this->middleware('permission:kegiatan_show',['only' => 'index']);
+        $this->middleware('permission:kegiatan_create',['only' => 'create','store']);
+        $this->middleware('permission:kegiatan_update',['only' => 'ubah']);
+        $this->middleware('permission:kegiatan_delete',['only' => 'destroy']);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -71,22 +77,29 @@ class KegiatanController extends Controller
             'tgl_selesai' => 'required',
             'nama' => 'required',
             'id_jenis_kegiatan' => 'required',
-            'id_lacon' => 'required',
-            'id_penceramah' => 'required',
             'id_pengurus' => 'required',
-            'keterangan' => 'required',
+            'id_penceramah' => 'required',
+            'id_lacon' => 'required',
         ],[
             'tgl_mulai.required' => 'Tanggal mulai wajib diisi!',
             'tgl_selesai.required' => 'Tanggal selesai wajib diisi!',
             'nama.required' => 'Nama wajib diisi!',
-            'id_jenis_kegiatan.required' => 'Jenis kegiatan wajib diisi!',
-            'id_lacon.required' => 'Imam wajib diisi!',
-            'id_penceramah.required' => 'Penceramah wajib diisi!',
+            'id_jenis_kegiatan.required' => 'Pilih Data dengan Benar',
             'id_pengurus.required' => 'Pengurus wajib diisi!',
-            'keterangan.required' => 'Keterangan wajib diisi!',
+            'id_penceramah.required' => 'Pilih Data dengan Benar',
+            'id_lacon.required' => 'Pilih Data dengan Benar',
         ]);
 
-        Kegiatan::create($validatedData);
+        Kegiatan::create([
+            'tgl_mulai' => $request->tgl_mulai,
+            'tgl_selesai' => $request->tgl_selesai,
+            'nama' => $request->nama,
+            'id_jenis_kegiatan' => $request->id_jenis_kegiatan,
+            'id_lacon' => $request->id_lacon,
+            'id_penceramah' => $request->id_penceramah,
+            'id_pengurus' => $request->id_pengurus,
+            'keterangan' => $request->keterangan,
+        ]);
         return redirect()->route('kegiatan.index');
     }
 
