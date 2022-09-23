@@ -20,6 +20,7 @@
 <center><h2 class="text-light">Data Jabatan</h2></center>
 <div class="row justify-content-center">
     <div class="col-xl-4 col-sm-6 mb-xl-0 mt-5">
+      @can('pengurus_create')
       <div class="card">
         <div class="card-body p-3">
           <div class="row">
@@ -40,10 +41,14 @@
             </div>
           </div>
         </div>
-    </div>
+      </div>
+      @endcan
 </div>
+@can('jabatan_create')
 <a href="{{ route('jabatan.create') }}" class="btn btn-dark mt-3 float-end" >Tambah Data</a>
+@endcan
 </div>
+
 @endsection
 @section('content')
 <div class="card" style="background-color: #EAF6F6">
@@ -63,16 +68,20 @@
                     <td scope="row" class="text-center">{{ $loop->iteration }}</td>
                     <td class="text-center">{{ $zee->nama_kategori }}</td>
                     <td class="text-center">
-                    <a href="{{ route('jabatan.edit', ['jabatan' => $zee]) }}" class="btn btn-warning btn-sm">
-                        <i class="fas fa-edit"></i>
-                    </a>
-                    <form action="{{ route('jabatan.destroy', ['jabatan' => $zee]) }}" method="POST" class="d-inline">
-                        @method('delete')
-                        @csrf
-                        <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Apa kamu yakin menghapus data ini Nah Ayoloh')">
-                            <i class="fas fa-trash"></i>
-                        </button>
-                    </form>
+                      @can('jabatan_update')
+                        <a href="{{ route('jabatan.edit', ['jabatan' => $zee]) }}" class="btn btn-warning btn-sm">
+                          <i class="fas fa-edit"></i>
+                        </a>
+                      @endcan
+                      @can('jabatan_delete')
+                      <form action="{{ route('jabatan.destroy', ['jabatan' => $zee]) }}" method="POST" class="d-inline">
+                          @method('delete')
+                          @csrf
+                          <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Apa kamu yakin menghapus data ini Nah Ayoloh')">
+                              <i class="fas fa-trash"></i>
+                          </button>
+                      </form>
+                      @endcan
                     </td>
                     </tr>
                     @endforeach

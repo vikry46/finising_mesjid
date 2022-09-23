@@ -45,6 +45,7 @@
       @endcan
     </div>
     <div class="col-xl-4 col-sm-6 mb-xl-0 mt-5">
+      @can('jabatan_show')
       <div class="card">
         <div class="card-body p-3">
           <div class="row">
@@ -66,6 +67,7 @@
           </div>
         </div>
       </div>
+      @endcan
     </div>
 </div>
 @endsection
@@ -101,12 +103,16 @@
                                 <div>
                                     <i class="ni education_hat mr-2"></i>{{ $zee->no_hp }}
                                 </div>
+                                @can('pengurus_update')
                                 <a href="{{ route('pengurus.edit',['penguru'=>$zee]) }}" class=" btn btn-sm btn-warning"><i class="fas fa-edit"></i></a>
+                                @endcan
+                                @can('pengurus_delete')
                                 <form action="{{ route('pengurus.destroy', ['penguru' => $zee]) }}" method="POST" class="d-inline">
                                     @method('delete')
                                     @csrf
                                     <button type="submit" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
                                 </form>
+                                @endcan
                             </div>
                         </div>
                     </div>

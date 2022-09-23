@@ -21,6 +21,7 @@
 <center><h2 class="text-light">Form Tambah Pengurus</h2></center>
 <div class="row justify-content-center">
     <div class="col-xl-4 col-sm-6 mb-xl-0 mt-5">
+        @can('jabatan_show')
       <div class="card">
         <div class="card-body p-3">
           <div class="row">
@@ -42,6 +43,7 @@
           </div>
         </div>
       </div>
+      @endcan
     </div>
 </div>
 @endsection

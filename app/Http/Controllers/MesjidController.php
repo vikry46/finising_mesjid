@@ -21,6 +21,12 @@ class MesjidController extends Controller
         return view('keuangan.mesjid.index',compact('AziziShafaaAsadel'));
     }
 
+    public function mesjid()
+    {
+        $AziziShafaaAsadel = Mesjid::all();
+        return view('laporan.mesjid',compact('AziziShafaaAsadel'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *

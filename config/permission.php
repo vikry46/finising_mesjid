@@ -53,6 +53,19 @@ return [
             'jabatan_update',
             'jabatan_delete',
         ],
+        'Manage Hak Akses' => [
+            'role_show',
+            'role_create',
+            'role_update',
+            'role_delete',
+        ],
+        'Manage User' => [
+            'user_show',
+            'user_create',
+            'user_update',
+            'user_delete',
+        ],
+        
     ],
 
     'models' => [

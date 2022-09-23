@@ -14,6 +14,7 @@ use App\Http\Controllers\YatimController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\TelegramController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\LaporanSosialController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -55,6 +56,7 @@ Route::group(['prefix' => '/dashboard'], function(){
         Route::resource('/role', RoleController::class);
         Route::resource('/users', UserController::class);
 
+
         // Bagian keuangan mesjid
         Route::group(['prefix' => '/keuangan'], function(){
             Route::get('/', [DashboardController::class, 'keuangan'])->name('keuangan');
@@ -63,9 +65,11 @@ Route::group(['prefix' => '/dashboard'], function(){
             Route::resource('/yatim', YatimController::class);
         });
 
-
-// belajar git mandan
-
-
+        //laporan
+        Route::group(['prefix'=>'laporan'], function(){
+            Route::get('/sosial', [LaporanSosialController::class,'index']);
+            Route::get('/mesjid', [MesjidController::class,'mesjid']);
+            Route::get('/yatim', [YatimController::class,'yatim']);
+        });
 });
 

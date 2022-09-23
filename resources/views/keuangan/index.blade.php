@@ -20,29 +20,32 @@
 <center><h2 class="text-light">Keuangan</h2></center>
 <div class="row justify-content-center">
     <div class="col-xl-4 col-sm-6 mb-xl-0 mt-5">
-      <div class="card">
-        <div class="card-body p-3">
-          <div class="row">
-            <div class="col-8">
-              <a href="{{ route('mesjid.index') }}">
-                <div class="numbers">
-                    <p class="text-sm mb-0 text-uppercase font-weight-bold">Mesjid</p>
-                    <h5 class="font-weight-bolder">
-                      مدير
-                    </h5>
+        @can('mesjid_show')
+        <div class="card">
+          <div class="card-body p-3">
+            <div class="row">
+              <div class="col-8">
+                <a href="{{ route('mesjid.index') }}">
+                  <div class="numbers">
+                      <p class="text-sm mb-0 text-uppercase font-weight-bold">Mesjid</p>
+                      <h5 class="font-weight-bolder">
+                        مدير
+                      </h5>
+                  </div>
+                </a>
+              </div>
+              <div class="col-4 text-end">
+                <div class="icon icon-shape bg-gradient-primary shadow-primary text-center rounded-circle">
+                  <i class="ni ni-money-coins text-lg opacity-10" aria-hidden="true"></i>
                 </div>
-              </a>
-            </div>
-            <div class="col-4 text-end">
-              <div class="icon icon-shape bg-gradient-primary shadow-primary text-center rounded-circle">
-                <i class="ni ni-money-coins text-lg opacity-10" aria-hidden="true"></i>
               </div>
             </div>
           </div>
         </div>
-      </div>
+        @endcan
     </div>
     <div class="col-xl-4 col-sm-6 mb-xl-0 mt-5">
+      @can('sosial_show')
       <div class="card">
         <div class="card-body p-3">
           <div class="row">
@@ -64,8 +67,10 @@
           </div>
         </div>
       </div>
+      @endcan
     </div>
     <div class="col-xl-4 col-sm-6 mb-xl-0 mt-5">
+      @can('yatim_show')
       <div class="card">
         <div class="card-body p-3">
           <div class="row">
@@ -87,6 +92,7 @@
           </div>
         </div>
       </div>
+      @endcan
     </div>
 </div>
 @endsection

@@ -83,6 +83,7 @@
           </a>
         </li>
         @endcan
+        @can('jeniskegiatan_show')
         <li class="nav-item">
           <a class="nav-link {{ set_active(['jeniskegiatan.index','jeniskegiatan.create','jeniskegiatan.edit',]) }}" href="{{ route('jeniskegiatan.index') }}">
             <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
@@ -91,6 +92,8 @@
             <span class="nav-link-text ms-1">Jenis Kegiatan</span>
           </a>
         </li>
+        @endcan
+        @can('lacon_show')
         <li class="nav-item">
           <a class="nav-link {{ set_active(['lacon.index','lacon.edit','lacon.create']) }}" href="{{ route('lacon.index') }}">
             <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
@@ -99,6 +102,8 @@
             <span class="nav-link-text ms-1">Lacon</span>
           </a>
         </li>
+        @endcan
+        @can('keuangan_show')
         <li class="nav-item">
           <a class="nav-link {{ set_active(['keuangan',
                                             'mesjid.index','mesjid.create','mesjid.edit',
@@ -113,6 +118,8 @@
             <span class="nav-link-text ms-1">Keuangan</span>
           </a>
         </li>
+        @endcan
+        @can('role_show')
         <li class="nav-item">
           <a class="nav-link {{ set_active(['role.index','role.edit','role.create'])  }}"
                 href="{{ route('role.index') }}">
@@ -122,6 +129,18 @@
             <span class="nav-link-text ms-1">Hak Akses</span>
           </a>
         </li>
+        @endcan
+        @can('user_show')
+        <li class="nav-item">
+          <a class="nav-link {{ set_active(['users.index','users.edit','users.create'])  }}"
+                href="{{ route('users.index') }}">
+            <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="ni ni-single-02 text-info text-sm opacity-10"></i>
+            </div>
+            <span class="nav-link-text ms-1">User</span>
+          </a>
+        </li>
+        @endcan
       </ul>
     </div>
   </aside>

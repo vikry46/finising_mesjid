@@ -22,7 +22,7 @@ class SosialController extends Controller
         $jumlah = $sumPemasukan -  $sumPengeluaran;
         return view('keuangan.sosial.index',compact('MertuaOmJamaah', 'sumPengeluaran','sumPemasukan','jumlah'));
     }
-
+    
     /**
      * Show the form for creating a new resource.
      *

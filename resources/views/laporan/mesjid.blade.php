@@ -17,21 +17,13 @@
 @endsection
 
 @section('content-header')
-    <center><h2 class="text-light">Data Keuangan Mesjid</h2></center>
-    @can('mesjid_create')
-    <a href="{{ route('mesjid.create') }}" class="btn btn-dark mt-9 float-end">Tambah Data</a>
-    @endcan
-  {{-- <div class="card" >
-    {{ $sumPemasukan }} Ini Pemasukan <br>
-    {{ $sumPengeluaran }} Ini Pengeluaran <br>
-    {{ $jumlah }} Ini Total <br>
-</div> --}}
+
 @endsection
 @section('content')
 <div class="card mt-9" style="background-color: #EAF6F6">
     <div class="card-body">
         <div class="table-responsive p-0">
-            <table class="table align-items-center mt-7">
+            <table class="table align-items-center mt-7 table-bordered border-dark">
                 <thead>
                     <tr>
                         <th class="text-uppercase text-secondary text-center text-xxs font-weight-bolder opacity-7">No</th>
@@ -55,25 +47,56 @@
                     <td class="text-center">{{ $sah->pengeluaran }}</td>
                     <td class="text-center">{{ $sah->keterangan }}</td>
                     <td class="text-center">
-                    @can('mesjid_update')
-                    <a href="{{ route('mesjid.edit', ['mesjid' => $sah]) }}" class="btn btn-warning btn-sm">
-                        <i class="fas fa-edit"></i>
-                    </a>
-                    @endcan
-                    @can('mesjid_delete')
-                    <form action="{{ route('mesjid.destroy', ['mesjid' => $sah]) }}" method="POST" class="d-inline">
-                        @method('delete')
-                        @csrf
-                        <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Apa kamu yakin menghapus data ini Nah Ayoloh')">
-                            <i class="fas fa-trash"></i>
-                        </button>
-                    </form>
-                    @endcan
                     </td>
                     </tr>
                     @endforeach
                 </tbody>
+            </table><br>
+            <table>
+                <tbody>
+                    <tr>
+                        <td>
+                            Total Pemasukan 
+                        </td>
+                        <td>
+                            :
+                        </td>
+                        <td>
+                            
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Total Pengeluaran 
+                        </td>
+                        <td>
+                            :
+                        </td>
+                        <td>
+                            
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Sisa Kas 
+                        </td>
+                        <td>
+                            :
+                        </td>
+                        <td>
+                            
+                        </td>
+                    </tr>
+                </tbody>
             </table>
+            <div class="container">
+                <div class="float-end">
+                    <p class="">Kamang Hilir..........................</p>
+                    <p class="mx-6">Pengurus</p><br><br><br>
+
+                    <p class="mx-5">(.........................)</p>
+                </div>
+            </div>
         </div>
     </div>
 </div>

@@ -18,8 +18,9 @@
 
 @section('content-header')
 <center><h2 class="text-light">Data Jabatan</h2></center>
-<a href="{{ route('users.index') }}" class="btn btn-primary mt-9 mx-2 float-end">User</a>
+@can('role_create')
 <a href="{{ route('role.create') }}" class="btn btn-dark mt-9 float-end">Tambah Data</a>
+@endcan
 @endsection
 
 @section('content')
@@ -40,12 +41,17 @@
                     <td scope="row" class="text-center">{{ $loop->iteration }}</td>
                     <td class="text-center">{{ $role->name }}</td>
                     <td class="text-center">
+                    @can('role_show')
                     <a href="{{ route('role.show', ['role' => $role]) }}" class="btn btn-info btn-sm">
                         <i class="fas fa-eye"></i>
                     </a>
+                    @endcan
+                    @can('role_update')
                     <a href="{{ route('role.edit', ['role' => $role]) }}" class="btn btn-warning btn-sm">
                         <i class="fas fa-edit"></i>
                     </a>
+                    @endcan
+                    @can('role_delete')
                     <form action="{{ route('role.destroy', ['role' => $role]) }}" method="POST" class="d-inline">
                         @csrf
                         @method('delete')
@@ -53,6 +59,7 @@
                             <i class="fas fa-trash"></i>
                         </button>
                     </form>
+                    @endcan
                     </td>
                     </tr>
                     @empty

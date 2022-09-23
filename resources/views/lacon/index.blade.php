@@ -18,7 +18,9 @@
 
 @section('content-header')
 <center><h2 class="text-light">Data Lacon</h2></center>
+@can('lacon_create')
 <a href="{{ route('lacon.create') }}" class="btn btn-dark mt-9 float-end">Tambah Data</a>
+@endcan
 @endsection
 
 @section('content')
@@ -43,9 +45,12 @@
                     <td class="text-center">{{ $del->alamat }}</td>
                     <td class="text-center">{{ $del->keterangan }}</td>
                     <td class="text-center">
+                    @can('lacon_update')
                     <a href="{{ route('lacon.edit', ['lacon' => $del]) }}" class="btn btn-warning btn-sm">
                         <i class="fas fa-edit"></i>
                     </a>
+                    @endcan
+                    @can('lacon_delete')
                     <form action="{{ route('lacon.destroy', ['lacon' => $del]) }}" method="POST" class="d-inline">
                         @method('delete')
                         @csrf
@@ -53,6 +58,7 @@
                             <i class="fas fa-trash"></i>
                         </button>
                     </form>
+                    @endcan
                     </td>
                     </tr>
                     @endforeach
