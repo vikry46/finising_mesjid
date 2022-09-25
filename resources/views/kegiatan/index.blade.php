@@ -30,7 +30,8 @@
 
 @section('content-header')
 <center><h2 class="text-light">Form Pemeran</h2></center>
-<a href="{{ route('kegiatan.create') }}" class="btn float-end mt-7" style="background-color:#5e72e4; color:white">Tambah Data</a>
+<a href="{{ route('report-kegiatan') }}" class="btn float-end mt-7" style="background-color:#5e72e4; color:white">Report Data</a>
+<a href="{{ route('kegiatan.create') }}" class="btn float-end mt-7 mx-3" style="background-color:#5e72e4; color:white">Tambah Data</a>
 <div class="card-body px-0 pt-0 pb-2">
   <div id='calendar' class="mt-10"></div>
 </div>

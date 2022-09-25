@@ -41,6 +41,7 @@ Route::group(['prefix' => '/dashboard'], function(){
 
         Route::resource('/kegiatan', KegiatanController::class);
         Route::post('/kegiatan_ajax', [KegiatanController::class, 'ajax']);
+        Route::get('/report_kegiatan', [KegiatanController::class, 'reportKegiatan'])->name('report-kegiatan');
         Route::get('/single_kegiatan', [KegiatanController::class, 'singleKegiatan']);
 
         Route::resource('/pengurus', PengurusController::class);
@@ -55,10 +56,5 @@ Route::group(['prefix' => '/dashboard'], function(){
             Route::resource('/mesjid', MesjidController::class);
             Route::resource('/yatim', YatimController::class);
         });
-
-
-// belajar git mandan
-
-
 });
 

@@ -234,4 +234,10 @@ class KegiatanController extends Controller
         return response()->json($kegiatan);
 
     }
+
+    public function reportKegiatan()
+    {
+        $kegiatan = Kegiatan::all();
+        return view('kegiatan.report', compact('kegiatan'));
+    }
 }
