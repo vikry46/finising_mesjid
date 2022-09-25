@@ -70,6 +70,7 @@ Route::group(['prefix' => '/dashboard'], function(){
             Route::get('/sosial', [LaporanSosialController::class,'index']);
             Route::get('/mesjid', [MesjidController::class,'mesjid']);
             Route::get('/yatim', [YatimController::class,'yatim']);
+            Route::get('/kegiatan', [LaporanKegiatanController::class,'yatim']);
         });
 });
 

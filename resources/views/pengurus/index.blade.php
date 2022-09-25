@@ -45,7 +45,7 @@
       @endcan
     </div>
     <div class="col-xl-4 col-sm-6 mb-xl-0 mt-5">
-      @can('jabatan_show')
+      {{-- @can('jabatan_show') --}}
       <div class="card">
         <div class="card-body p-3">
           <div class="row">
@@ -67,7 +67,7 @@
           </div>
         </div>
       </div>
-      @endcan
+      {{-- @endcan --}}
     </div>
 </div>
 @endsection

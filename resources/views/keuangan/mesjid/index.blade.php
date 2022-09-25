@@ -49,8 +49,8 @@
                     <tr>
                     <td class="text-center">{{ $loop->iteration }}</td>
                     <td class="text-center">{{ $sah->tgl }}</td>
-                    <td class="text-center">{{ $sah->kegiatan->nama }}</td>
                     <td class="text-center">{{ $sah->pengurus->nama }}</td>
+                    <td class="text-center">{{ $sah->kegiatan->nama }}</td>
                     <td class="text-center">{{ $sah->pemasukan }}</td>
                     <td class="text-center">{{ $sah->pengeluaran }}</td>
                     <td class="text-center">{{ $sah->keterangan }}</td>
