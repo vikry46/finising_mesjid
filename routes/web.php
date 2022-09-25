@@ -56,6 +56,5 @@ Route::group(['prefix' => '/dashboard'], function(){
             Route::resource('/mesjid', MesjidController::class);
             Route::resource('/yatim', YatimController::class);
         });
-        // Tes
 });
 
