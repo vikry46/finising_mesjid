@@ -65,6 +65,21 @@ return [
             'user_update',
             'user_delete',
         ],
+        'Manage Laporan' => [
+            'laporan_show',
+        ],
+        'Manage laporan mesjid' => [
+            'mesjid_laporan',
+        ],
+        'Manage laporan yatim' => [
+            'yatim_laporan',
+        ],
+        'Manage laporan sosial' => [
+            'sosial_laporan',
+        ],
+        'Manage laporan kegiatan' => [
+            'kegiatan_laporan',
+        ],
         
     ],
 

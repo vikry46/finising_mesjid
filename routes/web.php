@@ -15,6 +15,14 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\TelegramController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\LaporanSosialController;
+use App\Http\Controllers\LaporanKegiatanController;
+use App\Http\Controllers\LaporanController;
+use Illuminate\Support\Facades\DB;
+use App\Models\Mesjid;
+use App\Models\Yatim;
+use App\Models\Kegiatan;
+
+use Carbon\Carbon;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -28,6 +36,9 @@ use App\Http\Controllers\LaporanSosialController;
 
 Route::get('/', function () {
     return view('welcome');
+});
+Route::get('/about', function () {
+    return view('about');
 });
 
 // Route::get('/telegram', [TelegramContoller::class, 'test']);
@@ -67,10 +78,42 @@ Route::group(['prefix' => '/dashboard'], function(){
 
         //laporan
         Route::group(['prefix'=>'laporan'], function(){
-            Route::get('/sosial', [LaporanSosialController::class,'index']);
-            Route::get('/mesjid', [MesjidController::class,'mesjid']);
-            Route::get('/yatim', [YatimController::class,'yatim']);
-            Route::get('/kegiatan', [LaporanKegiatanController::class,'yatim']);
+            Route::get('/sosial', [LaporanSosialController::class,'index'])->name('sosial.t');
+            // Route::get('/mesjid', [MesjidController::class,'mesjid'])->name('mesjid.t');
+            Route::get('/dashboard/laporan/pemesanan', function () {
+                if (request()->start_date || request()->end_date) {
+                    $start_date = Carbon::parse(request()->start_date)->toDateTimeString();
+                    $end_date = Carbon::parse(request()->end_date)->toDateTimeString();
+                    $data = Mesjid::whereBetween('tgl',[$start_date,$end_date])->get();
+                    $sumpemasukan = Mesjid::whereBetween('tgl',[$start_date,$end_date])->sum('pemasukan');
+                    $sumpengeluaran = Mesjid::whereBetween('tgl',[$start_date,$end_date])->sum('pengeluaran');
+                } else {
+                    $sumpemasukan = DB::table("mesjids")->sum('pemasukan');
+                    $sumpengeluaran = DB::table("mesjids")->sum('pengeluaran');
+                    $data = Mesjid::latest()->get();
+                }
+                    $sisa = $sumpemasukan - $sumpengeluaran;
+                    $waktu_sekarang = Carbon::now()->isoFormat('dddd, D MMM Y');
+                return view('laporan.mesjid', compact('data','sumpemasukan','sumpengeluaran','sisa','waktu_sekarang'));
+            })->name('mesjid.t');
+            // Route::get('/yatim', [YatimController::class,'yatim'])->name('yatim.t');
+            Route::get('/dashboard/laporan/yatim', function () {
+                if (request()->start_date || request()->end_date) {
+                    $start_date = Carbon::parse(request()->start_date)->toDateTimeString();
+                    $end_date = Carbon::parse(request()->end_date)->toDateTimeString();
+                    $ShaniaGracia = Yatim::whereBetween('tgl',[$start_date,$end_date])->get();
+                    $sumpemasukan = Yatim::whereBetween('tgl',[$start_date,$end_date])->sum('pemasukan');
+                    $sumpengeluaran = Yatim::whereBetween('tgl',[$start_date,$end_date])->sum('pengeluaran');
+                } else {
+                    $sumpemasukan = DB::table("yatims")->sum('pemasukan');
+                    $sumpengeluaran = DB::table("yatims")->sum('pengeluaran');
+                    $ShaniaGracia = Yatim::latest()->get();
+                }
+                    $sisa = $sumpemasukan - $sumpengeluaran;
+                return view('laporan.yatim', compact('ShaniaGracia','sumpemasukan','sumpengeluaran','sisa'));
+            })->name('yatim.t');
+            Route::get('/kegiatan', [LaporanKegiatanController::class,'kegiatan'])->name('kegiatan.t');
+            Route::get('/informasi', [LaporanController::class,'index'])->name('informasi.t');
         });
 });
 

@@ -24,9 +24,13 @@ class PengurusController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $zoya = Pengurus::all();
+        if ($request->has('search')) {
+            $zoya = Pengurus::where('nama','LIKE','%'.$request->search. '%')->paginate(4);
+        }else{
+            $zoya = Pengurus::paginate(4);
+        }
         return view('pengurus.index',compact('zoya'));
     }
 

@@ -26,6 +26,17 @@
 @section('content')
 <div class="card mt-9" style="background-color: #EAF6F6">
     <div class="card-body">
+        <!-- Start kode untuk form pencarian -->
+        <form action="{{ route('lacon.index') }}" method="GET">
+            <div class="input-group">
+               <input name="search" type="search" class="form-control" placeholder="Masukkan keyword" value="{{ request()->get('search') }}">
+               <div class="input-group-append">
+                  <button class="btn btn-primary" type="submit">
+                     <i class="fas fa-search"></i>
+                  </button>
+               </div>
+            </div>
+         </form>
         <div class="table-responsive p-0">
             <table class="table align-items-center mt-7">
                 <thead>

@@ -9,6 +9,13 @@ use Illuminate\Http\Request;
 
 class YatimController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('permission:yatim_show',['only' => 'index']);
+        $this->middleware('permission:yatim_create',['only' => 'create','store']);
+        $this->middleware('permission:yatim_update',['only' => 'edit','update']);
+        $this->middleware('permission:yatim_delete',['only' => 'destroy']);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -128,5 +135,13 @@ class YatimController extends Controller
     {
         Yatim::destroy($yatim->id);
         return redirect()->route('yatim.index');
+    }
+
+
+    //Laporan keuangan Yatim
+    public function yatim()
+    {
+        $ShaniaGracia = Yatim::all();
+        return view('laporan.yatim',compact('ShaniaGracia'));
     }
 }

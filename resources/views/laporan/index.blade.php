@@ -27,6 +27,7 @@
 
 @section('content')
 <div class="card mt-9" style="background-color: #EAF6F6">
+    <a href="{{ route('informasi.t') }}" class="btn btn-dark mt-9 float-end">Kembali</a>
     <div class="card-body">
         <div class="table-responsive p-0">
             <table class="table align-items-center mt-7 table-bordered border-dark">

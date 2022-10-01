@@ -7,14 +7,25 @@ use Illuminate\Http\Request;
 
 class LaconController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('permission:lacon_show',['only' => 'index']);
+        $this->middleware('permission:lacon_create',['only' => 'create','store']);
+        $this->middleware('permission:lacon_update',['only' => 'edit','update']);
+        $this->middleware('permission:lacon_delete',['only' => 'destroy']);
+    }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $lacon = Lacon::all(); 
+        if ($request->has('search')) {
+            $lacon = Lacon::where('nama','LIKE','%'.$request->search. '%')->paginate(4);
+        }else{
+            $lacon = Lacon::paginate(4);
+        }
         return view('lacon.index',compact('lacon'));
     }
 

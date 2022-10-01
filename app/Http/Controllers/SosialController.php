@@ -9,6 +9,13 @@ use Illuminate\Http\Request;
 
 class SosialController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('permission:sosial_show',['only' => 'index']);
+        $this->middleware('permission:sosial_create',['only' => 'create','store']);
+        $this->middleware('permission:sosial_update',['only' => 'edit','update']);
+        $this->middleware('permission:sosial_delete',['only' => 'destroy']);
+    }
     /**
      * Display a listing of the resource.
      *

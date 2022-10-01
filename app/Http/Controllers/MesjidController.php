@@ -10,6 +10,13 @@ use Illuminate\Http\Request;
 
 class MesjidController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('permission:mesjid_show',['only' => 'index']);
+        $this->middleware('permission:mesjid_create',['only' => 'create','store']);
+        $this->middleware('permission:mesjid_update',['only' => 'edit','update']);
+        $this->middleware('permission:mesjid_delete',['only' => 'destroy']);
+    }
     /**
      * Display a listing of the resource.
      *

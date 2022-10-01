@@ -72,6 +72,16 @@
 </div>
 @endsection
 @section('content')
+<form action="{{ route('pengurus.index') }}" method="GET">
+  <div class="input-group">
+     <input name="search" type="search" class="form-control" placeholder="Masukkan keyword" value="{{ request()->get('search') }}">
+     <div class="input-group-append">
+        <button class="btn btn-primary" type="submit">
+           <i class="fas fa-search"></i>
+        </button>
+     </div>
+  </div>
+</form>
 <div class="card" style="background-color: #EAF6F6">
     <div class="table-responsive">
         <div class="container">

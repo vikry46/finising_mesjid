@@ -7,6 +7,13 @@ use Illuminate\Http\Request;
 
 class JeniskegiatanController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('permission:jeniskegiatan_show',['only' => 'index']);
+        $this->middleware('permission:jeniskegiatan_create',['only' => 'create','store']);
+        $this->middleware('permission:jeniskegiatan_update',['only' => 'edit','update']);
+        $this->middleware('permission:jeniskegiatan_delete',['only' => 'destroy']);
+    }
     /**
      * Display a listing of the resource.
      *

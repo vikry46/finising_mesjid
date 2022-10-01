@@ -60,16 +60,7 @@
             <span class="nav-link-text ms-1">Dashboard</span>
           </a>
         </li>
-        @can('kegiatan_show')
-        <li class="nav-item">
-          <a class="nav-link {{ set_active(['kegiatan.index','kegiatan.create']) }}" href="{{ route('kegiatan.index') }}">
-            <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="ni ni-calendar-grid-58 text-warning text-sm opacity-10"></i>
-            </div>
-            <span class="nav-link-text ms-1">Kegiatan</span>
-          </a>
-        </li>
-        @endcan
+
         @can('pengurus_show')
         <li class="nav-item">
           <a class="nav-link {{ set_active(['pengurus.index','pengurus.create','pengurus.edit',
@@ -83,6 +74,18 @@
           </a>
         </li>
         @endcan
+
+        @can('lacon_show')
+        <li class="nav-item">
+          <a class="nav-link {{ set_active(['lacon.index','lacon.edit','lacon.create']) }}" href="{{ route('lacon.index') }}">
+            <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="ni ni-tag text-primary text-sm opacity-10"></i>
+            </div>
+            <span class="nav-link-text ms-1">Lacon/Pengisi Acara</span>
+          </a>
+        </li>
+        @endcan
+
         @can('jeniskegiatan_show')
         <li class="nav-item">
           <a class="nav-link {{ set_active(['jeniskegiatan.index','jeniskegiatan.create','jeniskegiatan.edit',]) }}" href="{{ route('jeniskegiatan.index') }}">
@@ -93,16 +96,19 @@
           </a>
         </li>
         @endcan
-        @can('lacon_show')
+
+        @can('kegiatan_show')
         <li class="nav-item">
-          <a class="nav-link {{ set_active(['lacon.index','lacon.edit','lacon.create']) }}" href="{{ route('lacon.index') }}">
+          <a class="nav-link {{ set_active(['kegiatan.index','kegiatan.create']) }}" href="{{ route('kegiatan.index') }}">
             <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="ni ni-tag text-primary text-sm opacity-10"></i>
+              <i class="ni ni-calendar-grid-58 text-warning text-sm opacity-10"></i>
             </div>
-            <span class="nav-link-text ms-1">Lacon</span>
+            <span class="nav-link-text ms-1">Kegiatan</span>
           </a>
         </li>
         @endcan
+
+
         @can('keuangan_show')
         <li class="nav-item">
           <a class="nav-link {{ set_active(['keuangan',
@@ -119,6 +125,23 @@
           </a>
         </li>
         @endcan
+        @can('laporan_show')
+        <li class="nav-item">
+          <a class="nav-link {{ set_active(['laporan',
+                                            'mesjid',
+                                            'sosial',
+                                            'yatim',
+                                            'kegitan',
+                                        ])
+                              }}"
+                href="{{ route('informasi.t') }}">
+            <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="ni ni-single-copy-04 text-dark text-sm opacity-10"></i>
+            </div>
+            <span class="nav-link-text ms-1">laporan</span>
+          </a>
+        </li>
+       @endcan
         @can('role_show')
         <li class="nav-item">
           <a class="nav-link {{ set_active(['role.index','role.edit','role.create'])  }}"

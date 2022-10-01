@@ -23,6 +23,7 @@ class PermissionTableSeeder extends Seeder
         $superAdminPermissions = [];
         $sekretarisPermissions = [];
         $bendaharaPermissions = [];
+        $laporanPermissions = [];
 
 
         foreach ($authorities as $label => $permissions) {
@@ -57,6 +58,12 @@ class PermissionTableSeeder extends Seeder
             'created_at'=> date('Y-m-d H:i:s'),
             'updated_at'=> date('Y-m-d H:i:s'),
         ]);
+        $laporanAdmin = Role::create([
+            'name'=> "AdminLaporan",
+            'guard_name'=> 'web',
+            'created_at'=> date('Y-m-d H:i:s'),
+            'updated_at'=> date('Y-m-d H:i:s'),
+        ]);
         $sekretaris = Role::create([
             'name'=> "Sekretaris",
             'guard_name'=> 'web',
@@ -73,6 +80,7 @@ class PermissionTableSeeder extends Seeder
         $superAdmin->givePermissionTo($superAdminPermissions);
         $sekretaris->givePermissionTo($sekretarisPermissions);
         $bendahara->givePermissionTo($bendaharaPermissions);
+        $laporanAdmin->givePermissionTo($laporanPermissions);
 
         $userSuperAdmin = User::find(1)->assignRole("SuperAdmin");
     }

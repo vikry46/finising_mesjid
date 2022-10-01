@@ -7,7 +7,13 @@ use Illuminate\Http\Request;
 
 class JabatanController extends Controller
 {
-
+    public function __construct()
+    {
+        $this->middleware('permission:jabatan_show',['only' => 'index']);
+        $this->middleware('permission:jabatan_create',['only' => 'create','store']);
+        $this->middleware('permission:jabatan_update',['only' => 'edit','update']);
+        $this->middleware('permission:jabatan_delete',['only' => 'destroy']);
+    }
     /**
      * Display a listing of the resource.
      *

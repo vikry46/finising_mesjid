@@ -14,8 +14,11 @@ class DashboardController extends Controller
 
     public function index()
     {
-        return view('dashboard.index');
+        $pengurus = DB::table('penguruses')->count();
+        $kegiatan = DB::table('kegiatans')->count();
+        return view('dashboard.index', compact('kegiatan','pengurus'));
     }
+
 
     public function keuangan()
     {

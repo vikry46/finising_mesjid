@@ -37,5 +37,4 @@ class Pengurus extends Model
         return $this->hasMany(Yatim::class);
     }
 
-
 }
