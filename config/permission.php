@@ -80,6 +80,11 @@ return [
         'Manage laporan kegiatan' => [
             'kegiatan_laporan',
         ],
+        'Manage kontak' => [
+            'kontak_show',
+            'kontak_delete',
+        ],
+
         
     ],
 

@@ -26,7 +26,7 @@ https://templatemo.com/tm-550-diagoona
                 <div class="tm-col-left">
                     <div class="tm-site-header media">
                         <div class="media-body">
-                            <h1 class="tm-sitename text-uppercase">Mesjid Taqwim</h1>
+                            <h1 class="tm-sitename text-uppercase">{{ config('app.name') }}</h1>
                             <p class="tm-slogon">dangau baru kamang hilir</p>
                         </div>        
                     </div>
@@ -75,10 +75,11 @@ https://templatemo.com/tm-550-diagoona
             <div class="tm-bg-right"></div>
         </div>
     </div>
-
     <script src="{{ asset('landing_page') }}/js/jquery-3.4.1.min.js"></script>
     <script src="{{ asset('landing_page') }}/js/bootstrap.min.js"></script>
     <script src="{{ asset('landing_page') }}/js/jquery.backstretch.min.js"></script>
     <script src="{{ asset('landing_page') }}/js/templatemo-script.js"></script>
+    @include('sweetalert::alert')
+
 </body>
 </html>

@@ -17,10 +17,12 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\LaporanSosialController;
 use App\Http\Controllers\LaporanKegiatanController;
 use App\Http\Controllers\LaporanController;
+use App\Http\Controllers\KontakController;
 use Illuminate\Support\Facades\DB;
 use App\Models\Mesjid;
 use App\Models\Yatim;
 use App\Models\Kegiatan;
+
 
 use Carbon\Carbon;
 /*
@@ -115,5 +117,10 @@ Route::group(['prefix' => '/dashboard'], function(){
             Route::get('/kegiatan', [LaporanKegiatanController::class,'kegiatan'])->name('kegiatan.t');
             Route::get('/informasi', [LaporanController::class,'index'])->name('informasi.t');
         });
+        Route::get('/kontak', [KontakController::class,'index'])->name('kontak');
+        Route::get('/kontak/hapus/{id}', [KontakController::class,'delete'])->name('kontak.hapus');
 });
+
+Route::get('/kontak/tambah', [KontakController::class,'tambah'])->name('kontak.tambah');
+Route::post('/kontak/store', [KontakController::class,'store'])->name('kontak.store');
 

@@ -8,12 +8,9 @@
         <ul class="navbar-nav text-uppercase">
             <li class="nav-item active">
                 <a class="nav-link tm-nav-link" href="/">Home <span class="sr-only">(current)</span></a>
-            </li>
+            </li>                         
             <li class="nav-item">
-                <a class="nav-link tm-nav-link" href="/about">Berita</a>
-            </li>                           
-            <li class="nav-item">
-                <a class="nav-link tm-nav-link" href="contact.html">Kontak</a>
+                <a class="nav-link tm-nav-link" href="{{ route('kontak.tambah') }}">Kontak</a>
             </li>
             <li class="nav-item"> 
               @if (Route::has('login'))

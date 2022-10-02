@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Jeniskegiatan;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
+
 
 class JeniskegiatanController extends Controller
 {
@@ -49,6 +51,7 @@ class JeniskegiatanController extends Controller
             'jenis_kegiatan'.'required'=>'Jenis Kegiatan Wajib di Isi',
         ]);
         Jeniskegiatan::create($deldel);
+        Alert::success('Jenis Kegiatan', 'Berhasil ditambahkan');
         return redirect()->route('jeniskegiatan.index');
     }
 

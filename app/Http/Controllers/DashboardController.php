@@ -16,7 +16,9 @@ class DashboardController extends Controller
     {
         $pengurus = DB::table('penguruses')->count();
         $kegiatan = DB::table('kegiatans')->count();
-        return view('dashboard.index', compact('kegiatan','pengurus'));
+        $lacon = DB::table('lacons')->count();
+        $jkegiatan = DB::table('jeniskegiatans')->count();
+        return view('dashboard.index', compact('kegiatan','pengurus','lacon','jkegiatan'));
     }
 
 

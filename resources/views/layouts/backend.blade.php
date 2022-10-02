@@ -164,6 +164,18 @@
           </a>
         </li>
         @endcan
+        @can('kontak_show')
+        <li class="nav-item">
+          <a class="nav-link {{ set_active(['kontak'])  }}"
+                href="{{ route('kontak') }}">
+            <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="ni ni-send text-success text-sm opacity-10"></i>
+            </div>
+            <span class="nav-link-text ms-1">Masukan</span>
+          </a>
+        </li>
+        @endcan
+
       </ul>
     </div>
   </aside>
@@ -367,6 +379,8 @@
   <script async defer src="https://buttons.github.io/buttons.js"></script>
   <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
   <script src="{{ asset('tamplate') }}/assets/js/argon-dashboard.min.js?v=2.0.4"></script>
+  @include('sweetalert::alert')
+
 </body>
 
 </html>

@@ -37,7 +37,7 @@ class PermissionTableSeeder extends Seeder
                 // super admin access
                 $superAdminPermissions[] = $permission;
                 // sekretaris
-                 if(in_array($label,['Manage Pengurus','Manage Kegiatan','Manage Jenis Kegiatan','Manage Lacon','Manage Jabatan','Manage Hak Akses','Manage User'])){
+                 if(in_array($label,['Manage Pengurus','Manage Kegiatan','Manage Jenis Kegiatan','Manage Lacon','Manage Jabatan','Manage Hak Akses','Manage User','Manage kontak'])){
                     $sekretarisPermissions[] = $permission; 
                  }
                 //  bendahara
