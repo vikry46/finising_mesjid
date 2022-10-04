@@ -9,7 +9,7 @@
 @endsection
 
 @section('bg-color')
-    background-color:#1E5128;
+    background-color:#4682B4;
 @endsection
 
 @section('breadcrumbs')
@@ -17,7 +17,7 @@
 @endsection
 
 @section('content-header')
-<center><h2 class="text-light">Masukan dan Satan Masyarakat </h2></center>
+<center><h2 class="text-light">Masukan dan Saran Masyarakat </h2></center>
 
 
 @endsection

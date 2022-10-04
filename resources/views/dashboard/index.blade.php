@@ -13,7 +13,7 @@
 @endsection
 
 @section('bg-color')
-    background-color:#7D1935;
+    background-color:#9370DB;
 @endsection
 
 @section('content-header')

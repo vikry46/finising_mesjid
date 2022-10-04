@@ -21,7 +21,7 @@
 @endpush
 
 @section('bg-color')
-    background-color:#2B4865;
+    background-color:#FF8C00;
 @endsection
 
 @section('breadcrumbs')

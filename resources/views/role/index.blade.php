@@ -9,7 +9,7 @@
 @endsection
 
 @section('bg-color')
-    background-color:#787A91;
+    background-color:#FFD700;
 @endsection
 
 @section('breadcrumbs')

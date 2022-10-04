@@ -62,9 +62,9 @@ https://templatemo.com/tm-550-diagoona
             </div>         --}}
             <div class="tm-col-right tm-col-footer">
                 <footer class="tm-site-footer text-right">
-                    <p class="mb-0">Copyright 2020 Diagoona Co. 
-                    
-                    | Design: <a rel="nofollow" target="_parent" href="https://templatemo.com" class="tm-text-link">TemplateMo</a></p>
+                    <p class="mb-0"> 
+                        by: vikry Verdinal Hadrian
+                     <a rel="nofollow" target="_parent" class="tm-text-link"></a></p>
                 </footer>
             </div>  
         </div>
