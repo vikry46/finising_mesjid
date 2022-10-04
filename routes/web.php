@@ -124,4 +124,4 @@ Route::group(['prefix' => '/dashboard'], function(){
 Route::get('/kontak/tambah', [KontakController::class,'tambah'])->name('kontak.tambah');
 Route::post('/kontak/store', [KontakController::class,'store'])->name('kontak.store');
 
-//tes github
+//tes github 2
